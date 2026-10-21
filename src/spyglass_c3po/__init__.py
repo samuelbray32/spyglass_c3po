@@ -1,1 +1,1 @@
-from c3po import MarksGroup, ModelParams, TrainingParams, ModelSelection, Model
+from .c3po import MarksGroup, ModelParams, TrainingParams, ModelSelection, Model
