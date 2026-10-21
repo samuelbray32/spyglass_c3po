@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+dependencies = [
+    "numpy",
+    "jax",
+    "jaxlib",
+    "flax",
+    "optax",
+    "matplotlib",
+    "pandas",
+    "h5py",
+    "scipy",
+    "scikit-learn",
+    "tqdm",
+    "dandi",
+    "fsspec[http]",
+    "pynwb",
+    "pyyaml",
+    "spyglass-neuro",
+    "c3po-neuro",
+]
+name = "spyglass_c3po"
+description = "Spyglass extension for the C3PO latent inference package"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Samuel R Bray", email = "sam.bray@ucsf.edu" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/samuelbray32/spyglass_c3po"
+"Bug Tracker" = "https://github.com/samuelbray32/spyglass_c3po/issues"
+
+[project.optional-dependencies]
+test = ["black", "pytest", "pytest-cov"]
+gpu = ["jax[cuda]"]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/spyglass_c3po/_version.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [".git_archival.txt"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spyglass_c3po"]
